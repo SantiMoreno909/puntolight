@@ -1,0 +1,167 @@
+/*VARIABLES*/
+:root {
+  --verde-bg: #315142;
+  --color-letra: #ffffff;
+  --color-fondo: #1f2124;
+  --color-bordes: #61666d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Chivo", sans-serif;
+}
+
+body {
+  color: var(--color-letra);
+  background-color: var(--color-fondo);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-letra);
+  font-family: "Chivo", sans-serif;
+}
+a:hover {
+  color: var(--color-celeste);
+}
+
+.d-flex-c {
+  display: flex;
+  flex-direction: column;
+}
+
+.d-flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.centrado {
+  margin: auto auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.alinear-izq {
+  margin: 0 auto 0 0;
+}
+
+.alinear-der {
+  margin: 0 0 0 auto;
+}
+
+.txt-grueso {
+  font-family: "Caveat Brush", serif;
+}
+
+.section-title {
+  font-family: "Caveat Brush", serif;
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.bg-verde {
+  background-color: var(--verde-bg);
+}
+
+/*MAIN*/
+
+main {
+  padding: 3vw 7vw 2vw;
+}
+
+.volver-txt:hover {
+  text-decoration: underline;
+}
+
+.reseñas__txt {
+  text-align: center;
+  font-size: 1.4rem;
+  margin: 1rem 0;
+}
+
+form {
+  padding: 2rem;
+  border-radius: 2rem;
+}
+
+label {
+  font-size: 1.2rem;
+  margin-right: 2rem;
+  margin-bottom: 0.3rem;
+}
+
+input,
+textarea {
+  background-color: var(--color-fondo);
+  border-bottom: 3px solid black;
+  padding: 3px 5px;
+  border-radius: 5px;
+  margin-bottom: 0.8rem;
+  color: var(--color-letra);
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+textarea {
+  resize: none;
+}
+
+.file {
+  background-color: var(--verde-bg);
+  border: none;
+  cursor: pointer;
+}
+
+.enviar-btn {
+  width: 20%;
+  align-self: center;
+}
+
+/*FOOTER*/
+footer {
+  margin-top: 2rem;
+  background-color: var(--verde-bg);
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.footer__txt {
+  font-size: 1rem;
+}
+
+footer > p > a:hover {
+  text-decoration: underline;
+}
+
+/*RESPONSIVE*/
+
+@media screen and (max-width: 750px) {
+  .enviar-btn {
+    width: 40%;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+  }
+}
