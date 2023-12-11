@@ -24,42 +24,10 @@
     <link rel="stylesheet" href="css/testimonios.css" />
   </head>
   <body>
-    <main>
-      <a href="/" class="volver-txt">Volver atras</a>
-      <h4 class="section-title">
-        ¡Hola! Bienvenido a la página de reseñas de Punto Light
-      </h4>
-      <p class="reseñas__txt">
-        Estamos muy agradecidos de que quieras dejar tu reseña
-        <i class="bi bi-chat-heart"></i> <br />¡Muy pronto un administrador
-        revisará la misma y la subirá a la página!
-      </p>
-      <form
-        action="/testimonios"
-        method="post"
-        enctype="multipart/form-data"
-        class="reseñas__form d-flex-c bg-verde"
-      >
-        <input type="hidden" name="Punto Light Testimonios" />
-        <label for="nombre">Tu nombre y apellido:</label>
-        <input type="text" placeholder="Nombre" id="nombre" name="nombre" />
-        <label for="mensaje">Tu mensaje</label>
-        <textarea
-          placeholder="¿Algo que quieras contarnos?"
-          id="mensaje"
-          name="mensaje"
-        ></textarea>
-        <label for="adjunto">¿Quieres subir una imagen?</label>
-        <input
-          type="file"
-          name="imagen"
-          accept="image/png, image/jpeg"
-          class="file"
-        />
-        <input type="hidden" name="_next" value="/gracias" />
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="submit" value="Enviar" class="enviar-btn" />
-      </form>
+    <main class="d-flex-c centrado gracias-main">
+      <h4 class="section-title">¡Muchas gracias por tu comentario!</h4>
+      <p class="gracias-txt">Pronto lo verás en nuestra web</p>
+      <a href="/" class="enlace-gracias">Volver a la página de Punto Light</a>
     </main>
     <footer class="d-flex-c">
       <p class="footer__txt">

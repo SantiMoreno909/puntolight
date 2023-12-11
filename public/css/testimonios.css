@@ -154,6 +154,24 @@ footer > p > a:hover {
   text-decoration: underline;
 }
 
+/*GRACIAS*/
+
+.gracias-main {
+  width: 100vw;
+  height: 100vh;
+  padding: auto auto;
+}
+
+.gracias-txt {
+  font-size: 1.5rem;
+  margin: 2rem 0;
+}
+
+.enlace-gracias {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 /*RESPONSIVE*/
 
 @media screen and (max-width: 750px) {
