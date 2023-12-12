@@ -123,6 +123,6 @@
 
   .footer__txt,
   footer > p > a {
-    font-size: 3%;
+    font-size: 0.8rem;
   }
 }
