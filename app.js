@@ -2,6 +2,7 @@ const express = require("express");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
+const nodemailer = require("nodemailer");
 
 const app = express();
 const PORT = 5000;
@@ -49,7 +50,7 @@ app.post("/testimonios", upload.single("imagen"), (req, res) => {
   // Obtener la información del formulario
   const nombre = req.body.nombre;
   const mensaje = req.body.mensaje;
-  const fecha = obtenerFechaActual(); // Función para obtener la fecha actual en formato DD/MM/AAAA
+  const fecha = obtenerFechaActual();
   const imagenPath = req.file.path;
 
   // Crear un objeto con la información
@@ -63,6 +64,9 @@ app.post("/testimonios", upload.single("imagen"), (req, res) => {
   // Guardar la información en un archivo JSON
   guardarTestimonio(testimonio);
 
+  // Enviar correo electrónico con la información y la imagen adjunta
+  enviarCorreo(nombre, mensaje, fecha, imagenPath);
+
   // Redirigir al usuario a la página de agradecimiento
   res.redirect("/gracias");
 });
@@ -73,7 +77,7 @@ app.listen(PORT, () => console.log("Server funcionando en puerto " + PORT));
 function obtenerFechaActual() {
   const ahora = new Date();
   const dia = ahora.getDate().toString().padStart(2, "0");
-  const mes = (ahora.getMonth() + 1).toString().padStart(2, "0"); // Sumamos 1 porque los meses van de 0 a 11
+  const mes = (ahora.getMonth() + 1).toString().padStart(2, "0");
   const anio = ahora.getFullYear();
   return `${dia}/${mes}/${anio}`;
 }
@@ -82,20 +86,51 @@ function obtenerFechaActual() {
 function guardarTestimonio(testimonio) {
   const testimoniosPath = "testimonios.json";
 
-  // Leer el archivo JSON existente o crear uno vacío si no existe
   let testimonios = [];
   if (fs.existsSync(testimoniosPath)) {
     const contenido = fs.readFileSync(testimoniosPath, "utf-8");
     testimonios = JSON.parse(contenido);
   }
 
-  // Agregar el nuevo testimonio al arreglo
   testimonios.push(testimonio);
 
-  // Guardar el arreglo actualizado en el archivo JSON
   fs.writeFileSync(
     testimoniosPath,
     JSON.stringify(testimonios, null, 2),
     "utf-8"
   );
+}
+
+// Función para enviar correo electrónico con la información y la imagen adjunta
+function enviarCorreo(nombre, mensaje, fecha, imagenPath) {
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "santimoreno909@gmail.com", // Coloca tu dirección de correo electrónico
+      pass: "41264200Sm", // Coloca tu contraseña
+    },
+  });
+
+  const mailOptions = {
+    from: "santimoreno909@gmail.com", // Coloca tu dirección de correo electrónico
+    to: "santiagom.contact@gmail.com", // Coloca la dirección de correo del destinatario
+    subject: "Nuevo testimonio recibido",
+    html: `<p><strong>Nombre:</strong> ${nombre}</p>
+           <p><strong>Mensaje:</strong> ${mensaje}</p>
+           <p><strong>Fecha:</strong> ${fecha}</p>`,
+    attachments: [
+      {
+        filename: "imagen_adjunta.jpg", // Puedes cambiar el nombre del archivo adjunto
+        path: imagenPath,
+      },
+    ],
+  };
+
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.error(error);
+    } else {
+      console.log("Correo enviado: " + info.response);
+    }
+  });
 }
