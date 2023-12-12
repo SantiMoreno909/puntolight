@@ -4,6 +4,10 @@
     font-size: 2.5rem;
   }
 
+  .mobile-centrado {
+    margin: 0 auto;
+  }
+
   /*HERO*/
   #hero {
     height: 40vh;
@@ -88,8 +92,8 @@
     padding: 1rem 2rem;
   }
 
-  .contacto__enlaces > .alinear-izq {
-    margin: 1rem 0;
+  .contacto__enlace {
+    font-size: 1.5rem;
   }
 
   iframe {
@@ -101,10 +105,6 @@
 
   .section-title__contact-form {
     font-size: 1.5rem;
-  }
-
-  .contacto__txt {
-    font-size: 1rem;
   }
 
   .formulario__select-grupo {
