@@ -17,10 +17,11 @@ const storage = multer.diskStorage({
     cb(null, "public/uploads"); // Directorio donde se almacenarán las imágenes
   },
   filename: function (req, file, cb) {
-    cb(
-      null,
-      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
-    );
+    // Modificar el nombre del archivo para incluir solo la ruta "uploads" y el formato deseado
+    const nuevoNombre = `${file.fieldname}-${Date.now()}${path.extname(
+      file.originalname
+    )}`;
+    cb(null, nuevoNombre);
   },
 });
 
@@ -106,6 +107,9 @@ function guardarTestimonio(testimonio) {
     const contenido = fs.readFileSync(testimoniosPath, "utf-8");
     testimonios = JSON.parse(contenido);
   }
+
+  // Modificar el nombre de la imagen para eliminar la parte "public\\"
+  testimonio.imagenPath = testimonio.imagenPath.replace("public\\", "");
 
   testimonios.push(testimonio);
 
