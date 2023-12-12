@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testimonios</title>
+    <link rel="stylesheet" href="estilos.css" />
+  </head>
+  <body>
+    <h1>Testimonios de Punto Light</h1>
+    <% if (testimonios.length === 0) { %>
+    <p>No hay testimonios disponibles.</p>
+    <% } else { %>
+    <ul>
+      <% testimonios.forEach(testimonio => { %>
+      <li>
+        <p><strong>Nombre:</strong> <%= testimonio.nombre %></p>
+        <p><strong>Mensaje:</strong> <%= testimonio.mensaje %></p>
+        <p><strong>Fecha:</strong> <%= testimonio.fecha %></p>
+        <img
+          src="<%= testimonio.imagenPath %>"
+          alt="Imagen del testimonio"
+          style="width: 300px"
+        />
+      </li>
+      <% }); %>
+    </ul>
+    <% } %>
+  </body>
+</html>
